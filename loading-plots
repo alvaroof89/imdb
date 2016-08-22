@@ -1,0 +1,18 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Aug 22 09:14:32 2016
+
+@author: alvaroof89
+"""
+import re
+
+#import the plot.list file from the imdb database and parse it using regexp module
+file = open("C:/Users/GGORS/Desktop/Data Science/plot.list", 'r')
+text = file.read()
+p = re.findall(r'MV: (.*)\s+((?:PL: (.*)\s)+)+', text, re.MULTILINE)
+dict = {}
+for i in range(0,len(p)):
+    dict[str(p[i][0])] = re.sub("(\nPL:|\n|PL: )","",str(p[i][1]))
+
+#Now 'dict' has key:title and value:plot. Ready for analyse
+
