@@ -13,7 +13,7 @@ library(SnowballC)
 raw_text <- read.csv("dict.csv", header = FALSE, stringsAsFactors = FALSE)
 corpus <- Corpus(VectorSource((data$V2))) #define corpus with the text
 corpus <- tm_map(corpus, tolower) #to lowercase
-corpus = tm_map(corpus, PlainTextDocument)
+corpus <- tm_map(corpus, PlainTextDocument)
 corpus <- tm_map(corpus, removePunctuation)
 corpus <- tm_map(corpus, removeWords, c(stopwords("english")))
 frequencies <- DocumentTermMatrix(corpus)
